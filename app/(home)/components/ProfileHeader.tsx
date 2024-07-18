@@ -1,9 +1,10 @@
+import { IUser } from "@/utils/types";
 import Image from "next/image";
 import Link from "next/link";
 import { FaBriefcase, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FaLocationPin } from "react-icons/fa6";
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ user }: { user: IUser }) => {
   return (
     <div className="mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
       <div className="relative rounded-t-lg h-36 bg-gradient-to-r from-purple-500 to-indigo-500">
@@ -36,10 +37,10 @@ const ProfileHeader = () => {
           </div>
         </div>
         <div className="my-2">
-          <h2 className="text-xl font-bold text-gray-800">Jesselyn Wang</h2>
+          <h2 className="text-xl font-bold text-gray-800">{user.name}</h2>
           <p className="text-gray-600 flex items-center mt-1">
             <FaBriefcase className="mr-2 text-gray-500" />
-            Lead Product Designer at Apple
+            {user.role}
           </p>
           <p className="text-gray-600 flex items-center mt-1">
             <FaLocationPin className="mr-2 text-gray-500" />
@@ -48,13 +49,17 @@ const ProfileHeader = () => {
         </div>
         <div className="mt-6 flex items-center space-x-6">
           <Link
-            href={`/profile/1/network`}
+            href={`/profile/${user.name
+              .replace(" ", "_")
+              .toLowerCase()}/network`}
             className="hover:text-blue-500 transition duration-300"
           >
             <span className="font-semibold text-gray-800">6,476</span> followers
           </Link>
           <Link
-            href={`/profile/1/network`}
+            href={`/profile/${user.name
+              .replace(" ", "_")
+              .toLowerCase()}/network`}
             className="hover:text-blue-500 transition duration-300"
           >
             <span className="font-semibold text-gray-800">500+</span>{" "}

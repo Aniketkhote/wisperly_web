@@ -1,4 +1,4 @@
-import { IJob, IPod } from "./types";
+import { IJob, IPod, IUser } from "./types";
 
 export const jobData: IJob[] = [
   {
@@ -199,5 +199,111 @@ export const pods: IPod[] = [
     description: "Share and enjoy the funniest memes on the internet",
     members: 13480,
     imageUrl: "images/banner.png",
+  },
+];
+
+export const suggestions: IUser[] = [
+  {
+    id: 1,
+    src: "https://api.multiavatar.com/Skeleto81.png",
+    name: "Roger Korsgaard",
+    role: "UX Designer",
+  },
+  {
+    id: 2,
+    src: "https://api.multiavatar.com/Skeleto82.png",
+    name: "Terry Torff",
+    role: "Frontend Developer",
+  },
+  {
+    id: 3,
+    src: "https://api.multiavatar.com/Skeleto83.png",
+    name: "Angel Bergson",
+    role: "Product Manager",
+  },
+  {
+    id: 4,
+    src: "https://api.multiavatar.com/Skeleto84.png",
+    name: "Lisa Chen",
+    role: "Data Analyst",
+  },
+  {
+    id: 5,
+    src: "https://api.multiavatar.com/Skeleto85.png",
+    name: "Mark Johnson",
+    role: "Backend Developer",
+  },
+  {
+    id: 6,
+    src: "https://api.multiavatar.com/Skeleto86.png",
+    name: "Sarah Williams",
+    role: "Marketing Specialist",
+  },
+];
+
+export const posts = [
+  {
+    userImg: suggestions[Math.floor(Math.random() * suggestions.length)].src,
+    userName: suggestions[Math.floor(Math.random() * suggestions.length)].name,
+    date: "23 Aug at 4:21 PM",
+    text: "Loving the new updates on this platform. Great job, team!",
+    postImg: ["https://via.placeholder.com/600?text=Image1"],
+    likes: "30",
+    comments: "12",
+    shares: "5",
+  },
+  {
+    userImg: suggestions[Math.floor(Math.random() * suggestions.length)].src,
+    userName: suggestions[Math.floor(Math.random() * suggestions.length)].name,
+    date: "23 Aug at 4:21 PM",
+    text: "Just visited an amazing restaurant! The food was fantastic and the ambiance was perfect.",
+    postImg: [],
+    likes: "30",
+    comments: "12",
+    shares: "5",
+  },
+  {
+    userImg: suggestions[Math.floor(Math.random() * suggestions.length)].src,
+    userName: suggestions[Math.floor(Math.random() * suggestions.length)].name,
+    date: "23 Aug at 4:21 PM",
+    text: "Check out this cool coffee shop I found downtown. The coffee is to die for!",
+    postImg: [
+      "https://via.placeholder.com/600?text=Image1",
+      "https://via.placeholder.com/600?text=Image2",
+    ],
+    likes: "30",
+    comments: "12",
+    shares: "5",
+  },
+  {
+    userImg: suggestions[Math.floor(Math.random() * suggestions.length)].src,
+    userName: suggestions[Math.floor(Math.random() * suggestions.length)].name,
+    date: "23 Aug at 4:21 PM",
+    text: "Check out this cool coffee shop I found downtown. The coffee is to die for!",
+    postImg: [
+      "https://via.placeholder.com/600?text=Image1",
+      "https://via.placeholder.com/600?text=Image2",
+      "https://via.placeholder.com/600?text=Image3",
+      "https://via.placeholder.com/600?text=Image4",
+      "https://via.placeholder.com/600?text=Image5",
+      "https://via.placeholder.com/600?text=Image6",
+    ],
+    likes: "30",
+    comments: "12",
+    shares: "5",
+  },
+  {
+    userImg: suggestions[Math.floor(Math.random() * suggestions.length)].src,
+    userName: suggestions[Math.floor(Math.random() * suggestions.length)].name,
+    date: "23 Aug at 4:21 PM",
+    text: "Check out this cool coffee shop I found downtown. The coffee is to die for!",
+    postImg: [
+      "https://via.placeholder.com/600?text=Image1",
+      "https://via.placeholder.com/600?text=Image2",
+      "https://via.placeholder.com/600?text=Image3",
+    ],
+    likes: "30",
+    comments: "12",
+    shares: "5",
   },
 ];

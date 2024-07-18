@@ -15,3 +15,10 @@ export interface IPod {
   imageUrl: string;
   members: number;
 }
+
+export interface IUser {
+  id: number;
+  src: string;
+  name: string;
+  role: string;
+}

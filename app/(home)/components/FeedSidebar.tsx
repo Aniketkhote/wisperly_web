@@ -1,56 +1,10 @@
 "use client";
+import { suggestions } from "@/utils/data";
 import Link from "next/link";
-// components/RightSidebar.tsx
 import { useState } from "react";
-
-interface User {
-  id: number;
-  src: string;
-  name: string;
-  role: string;
-}
 
 const RightSidebar = () => {
   const [followedUsers, setFollowedUsers] = useState<Set<number>>(new Set());
-
-  const suggestions: User[] = [
-    {
-      id: 1,
-      src: "https://api.multiavatar.com/Skeleto81.png",
-      name: "Roger Korsgaard",
-      role: "UX Designer",
-    },
-    {
-      id: 2,
-      src: "https://api.multiavatar.com/Skeleto82.png",
-      name: "Terry Torff",
-      role: "Frontend Developer",
-    },
-    {
-      id: 3,
-      src: "https://api.multiavatar.com/Skeleto83.png",
-      name: "Angel Bergson",
-      role: "Product Manager",
-    },
-    {
-      id: 4,
-      src: "https://api.multiavatar.com/Skeleto84.png",
-      name: "Lisa Chen",
-      role: "Data Analyst",
-    },
-    {
-      id: 5,
-      src: "https://api.multiavatar.com/Skeleto85.png",
-      name: "Mark Johnson",
-      role: "Backend Developer",
-    },
-    {
-      id: 6,
-      src: "https://api.multiavatar.com/Skeleto86.png",
-      name: "Sarah Williams",
-      role: "Marketing Specialist",
-    },
-  ];
 
   const toggleFollow = (userId: number) => {
     setFollowedUsers((prevState) => {
@@ -74,7 +28,7 @@ const RightSidebar = () => {
             className="flex items-center justify-between hover:bg-gray-50 p-2 rounded-md"
           >
             <Link
-              href={`/profile/${user.id}`}
+              href={`/profile/${user.name.replace(" ", "_").toLowerCase()}`}
               className="flex items-center cursor-pointer"
             >
               <img

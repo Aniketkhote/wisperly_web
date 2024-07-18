@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import {
   FaArrowLeft,
@@ -51,18 +52,20 @@ const Post = ({
 
   return (
     <div className="bg-white rounded-lg p-4 mb-4">
-      <div className="flex justify-between items-start mb-4">
-        <div className="flex items-center space-x-3">
-          <img
-            src={userImg}
-            alt={userName}
-            className="w-10 h-10 rounded-full"
-          />
-          <div>
-            <h2 className="text-sm font-semibold">{userName}</h2>
-            <p className="text-xs text-gray-500">{date}</p>
+      <div className="flex justify-between items-center mb-4">
+        <Link href={`/profile/${userName.replace(" ", "_").toLowerCase()}`}>
+          <div className="flex items-center space-x-3">
+            <img
+              src={userImg}
+              alt={userName}
+              className="w-10 h-10 rounded-full"
+            />
+            <div>
+              <h2 className="text-sm font-semibold">{userName}</h2>
+              <p className="text-xs text-gray-500">{date}</p>
+            </div>
           </div>
-        </div>
+        </Link>
         <FaEllipsisV className="text-gray-500" />
       </div>
       <div className="mb-4">{text}</div>
