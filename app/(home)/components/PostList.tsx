@@ -15,6 +15,7 @@ const PostList = () => {
           likes={post.likes}
           comments={post.comments}
           shares={post.shares}
+          bookmark={index % 2 == 0}
         />
       ))}
     </div>

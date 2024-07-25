@@ -1,4 +1,4 @@
-import { IJob, IPod, IUser } from "./types";
+import { IHashtag, IJob, IPod, IPodPost, IUser } from "./types";
 
 export const jobData: IJob[] = [
   {
@@ -307,3 +307,66 @@ export const posts = [
     shares: "5",
   },
 ];
+
+export const hashtags: IHashtag[] = [
+  { tag: "#travel", postCount: 1500000 },
+  { tag: "#food", postCount: 2000000 },
+  { tag: "#photography", postCount: 1800000 },
+  { tag: "#fitness", postCount: 2200000 },
+  { tag: "#fashion", postCount: 2500000 },
+];
+
+export const podPosts: IPodPost = {
+  id: 1,
+  author: suggestions[0],
+  content: "Just finished a great book! What's everyone reading these days?",
+  createdAt: "2024-07-25T10:30:00Z",
+  likes: 15,
+  comments: [
+    {
+      id: 1,
+      author: suggestions[1],
+      content: "I'm currently reading '1984' by George Orwell. It's a classic!",
+      createdAt: "2024-07-25T11:00:00Z",
+      replies: [
+        {
+          id: 2,
+          author: suggestions[2],
+          content:
+            "Oh, that's one of my favorites! Have you read 'Brave New World' as well?",
+          createdAt: "2024-07-25T11:15:00Z",
+        },
+        {
+          id: 3,
+          author: suggestions[1],
+          content:
+            "Not yet, but it's on my list. Thanks for the recommendation!",
+          createdAt: "2024-07-25T11:30:00Z",
+        },
+      ],
+    },
+    {
+      id: 4,
+      author: suggestions[3],
+      content:
+        "I just finished 'The Midnight Library' by Matt Haig. It was amazing!",
+      createdAt: "2024-07-25T12:00:00Z",
+      replies: [
+        {
+          id: 5,
+          author: suggestions[0],
+          content:
+            "I've heard good things about that one. I'll have to check it out!",
+          createdAt: "2024-07-25T12:15:00Z",
+        },
+      ],
+    },
+    {
+      id: 6,
+      author: suggestions[4],
+      content:
+        "I'm more into non-fiction. Currently reading 'Sapiens' by Yuval Noah Harari.",
+      createdAt: "2024-07-25T13:00:00Z",
+    },
+  ],
+};

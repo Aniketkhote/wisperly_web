@@ -22,3 +22,25 @@ export interface IUser {
   name: string;
   role: string;
 }
+
+export interface IHashtag {
+  tag: string;
+  postCount: number;
+}
+
+export interface IPodPost {
+  id: number;
+  author: IUser;
+  content: string;
+  likes: number;
+  comments: IComment[];
+  createdAt: string;
+}
+
+export interface IComment {
+  id: number;
+  author: IUser;
+  content: string;
+  createdAt: string;
+  replies?: IComment[];
+}

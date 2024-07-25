@@ -56,7 +56,7 @@ const CompanyCard = ({ company }: { company: ICompany }) => {
             </span>
           </Link>
           <button
-            className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded transition duration-300"
+            className="bg-indigo-500 hover:bg-indigo-600 text-white py-1 px-4 rounded transition duration-300"
             onClick={() => alert(`Connecting to ${company.name}`)}
           >
             Connect

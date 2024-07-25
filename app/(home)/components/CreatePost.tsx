@@ -11,7 +11,6 @@ import {
   FaPlus,
   FaTimes,
   FaUsers,
-  FaVideo,
 } from "react-icons/fa";
 
 type PostType = "text" | "image" | "video" | "document" | "job";
@@ -38,7 +37,7 @@ const PostCreationBox: React.FC = () => {
 
   const postTypes: PostTypeOption[] = [
     { type: "image", icon: FaImage, label: "Photo" },
-    { type: "video", icon: FaVideo, label: "Video" },
+    // { type: "video", icon: FaVideo, label: "Video" },
     { type: "document", icon: FaFileAlt, label: "Document" },
     { type: "job", icon: FaBriefcase, label: "Job" },
   ];
@@ -87,28 +86,35 @@ const PostCreationBox: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg p-4 max-w-2xl mx-auto mb-5">
-      <div
-        className="w-full p-3 border border-gray-300 rounded-lg cursor-text"
-        onClick={() => openDialog("text")}
-      >
-        What do you want to talk about?
-      </div>
-      <div className="flex justify-between items-center mt-4">
-        <div className="flex space-x-4">
-          {postTypes.map(({ type, icon: Icon, label }) => (
-            <button
-              key={type}
-              type="button"
-              className={`flex items-center space-x-1 text-gray-600 hover:text-indigo-600 focus:outline-none ${
-                selectedType === type ? "text-indigo-600" : ""
-              }`}
-              onClick={() => openDialog(type)}
-            >
-              <Icon className="w-4 h-4" />
-              <span className="text-sm font-semibold">{label}</span>
-            </button>
-          ))}
+    <div className="bg-white rounded-lg p-4 max-w-2xl mx-auto mb-5 flex">
+      <img
+        src="https://api.multiavatar.com/Skeleto83.png"
+        className="w-9 h-9 mr-3"
+        alt=""
+      />
+      <div className="flex-1">
+        <div
+          className="w-full px-3 py-2 border border-gray-300 text-gray-600 rounded-lg cursor-text"
+          onClick={() => openDialog("text")}
+        >
+          What do you want to talk about?
+        </div>
+        <div className="flex justify-between items-center mt-4">
+          <div className="flex space-x-4">
+            {postTypes.map(({ type, icon: Icon, label }) => (
+              <button
+                key={type}
+                type="button"
+                className={`flex items-center space-x-1 text-gray-600 hover:text-indigo-600 focus:outline-none ${
+                  selectedType === type ? "text-indigo-600" : ""
+                }`}
+                onClick={() => openDialog(type)}
+              >
+                <Icon className="w-4 h-4 mr-1" />
+                <span className="font-semibold">{label}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

@@ -68,14 +68,14 @@ const NetworkList = ({
                   ? "border border-indigo-500 text-indigo-500 hover:bg-indigo-600 hover:text-white"
                   : person.isFollowing == false
                   ? "bg-indigo-500 hover:bg-indigo-600 text-white"
-                  : "bg-red-500 hover:bg-red-600 text-white"
+                  : "text-gray-500 hover:bg-gray-600 hover:text-white border border-gray-500"
               }`}
           >
             {person.isFollowing
               ? "Following"
               : person.isFollowing == false
               ? "Follow"
-              : "Remove Connection"}
+              : "Connect"}
           </button>
         </motion.div>
       ))}

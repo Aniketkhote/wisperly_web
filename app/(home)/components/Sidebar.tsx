@@ -2,110 +2,86 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { IconType } from "react-icons";
 import {
   FaBookmark,
   FaBriefcase,
   FaHome,
-  FaLayerGroup,
-  FaPodcast,
   FaSuitcase,
+  FaUserAstronaut,
   FaUsers,
 } from "react-icons/fa";
-import { FaShield } from "react-icons/fa6";
 import Footer from "./Footer";
+import SidebarProfileCard from "./SidebarProfileCard";
 
-const Sidebar = () => {
+interface NavItem {
+  href: string;
+  icon: IconType;
+  label: string;
+}
+
+const navItems: NavItem[] = [
+  { href: "/", icon: FaHome, label: "Feed" },
+  { href: "/mynetwork", icon: FaUsers, label: "Network" },
+  // { href: "/communities", icon: FaLayerGroup, label: "Communities" },
+  { href: "/pods", icon: FaUserAstronaut, label: "Pods" },
+  // { href: "/podcasts", icon: FaPodcast, label: "Podcasts" },
+  { href: "/companies", icon: FaBriefcase, label: "Companies" },
+  { href: "/jobs", icon: FaSuitcase, label: "Job" },
+  { href: "/bookmark", icon: FaBookmark, label: "Bookmark" },
+];
+
+const Sidebar: React.FC = () => {
   const pathname = usePathname();
 
   return (
-    <div className="mb-5">
-      <div className="bg-white p-4 my-5 ml-5 rounded-lg text-sm space-y-2">
-        <Link
-          className={`flex justify-items-center gap-3 p-3 text-gray-800 hover:text-white hover:bg-indigo-600 hover:rounded-lg ${
-            pathname === "/" ? "bg-indigo-600 rounded-lg text-white" : ""
-          }`}
-          href="/"
-        >
-          <FaHome className="size-4" />
-          <p>Feed</p>
-        </Link>
-        <Link
-          className={`flex justify-items-center gap-3 p-3 text-gray-800 hover:text-white hover:bg-indigo-600 hover:rounded-lg ${
-            pathname === "/friends" ? "bg-indigo-600 rounded-lg text-white" : ""
-          }`}
-          href="/mynetwork"
-        >
-          <FaUsers className="size-4" />
-          <p>Network</p>
-        </Link>
-        <Link
-          className={`flex justify-items-center gap-3 p-3 text-gray-800 hover:text-white hover:bg-indigo-600 hover:rounded-lg ${
-            pathname === "/companies"
-              ? "bg-indigo-600 rounded-lg text-white"
-              : ""
-          }`}
-          href="/companies"
-        >
-          <FaBriefcase className="size-4" />
-          <p>Companies</p>
-        </Link>
-        <Link
-          className={`flex justify-items-center gap-3 p-3 text-gray-800 hover:text-white hover:bg-indigo-600 hover:rounded-lg ${
-            pathname === "/communities"
-              ? "bg-indigo-600 rounded-lg text-white"
-              : ""
-          }`}
-          href="/communities"
-        >
-          <FaLayerGroup className="size-4" />
-          <p>Communities</p>
-        </Link>
-        <Link
-          className={`flex justify-items-center gap-3 p-3 text-gray-800 hover:text-white hover:bg-indigo-600 hover:rounded-lg ${
-            pathname === "/pods" ? "bg-indigo-600 rounded-lg text-white" : ""
-          }`}
-          href="/pods"
-        >
-          <FaShield className="size-4" />
-          <p>Pods</p>
-        </Link>
-        <Link
-          className={`flex justify-items-center gap-3 p-3 text-gray-800 hover:text-white hover:bg-indigo-600 hover:rounded-lg ${
-            pathname === "/podcasts"
-              ? "bg-indigo-600 rounded-lg text-white"
-              : ""
-          }`}
-          href="/podcasts"
-        >
-          <FaPodcast className="size-4" />
-          <p>Podcasts</p>
-        </Link>
-        <Link
-          className={`flex justify-items-center gap-3 p-3 text-gray-800 hover:text-white hover:bg-indigo-600 hover:rounded-lg ${
-            pathname.includes("/jobs")
-              ? "bg-indigo-600 rounded-lg text-white"
-              : ""
-          }`}
-          href="/jobs"
-        >
-          <FaSuitcase className="size-4" />
-          <p>Job</p>
-        </Link>
-        <Link
-          className={`flex justify-items-center gap-3 p-3 text-gray-800 hover:text-white hover:bg-indigo-600 hover:rounded-lg ${
-            pathname === "/bookmark"
-              ? "bg-indigo-600 rounded-lg text-white"
-              : ""
-          }`}
-          href="/bookmark"
-        >
-          <FaBookmark className="size-4" />
-          <p>Bookmark</p>
-        </Link>
-      </div>
+    <div className="ml-5 mt-5 space-y-5">
+      <SidebarProfileCard
+        name="Alexis Wells"
+        username="wellsalex"
+        avatarUrl="https://api.multiavatar.com/Skeleto81.png"
+        isVerified={true}
+        followers={4600}
+        following={4600}
+        posts={460}
+      />
+      <nav className="bg-white p-4 rounded-lg text-sm space-y-2">
+        {navItems.map(({ href, icon: Icon, label }) => (
+          <NavItem
+            key={href}
+            href={href}
+            icon={<Icon className="size-4" />}
+            label={label}
+            isActive={
+              pathname === href ||
+              (href === "/jobs" && pathname.startsWith("/jobs")) ||
+              (href === "/pods" && pathname.startsWith("/pods"))
+            }
+          />
+        ))}
+      </nav>
       <Footer />
     </div>
   );
 };
+
+interface NavItemProps {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  isActive: boolean;
+}
+
+const NavItem: React.FC<NavItemProps> = ({ href, icon, label, isActive }) => (
+  <Link
+    className={`flex items-center gap-3 p-3 text-gray-800 hover:text-white hover:bg-indigo-600 hover:rounded-lg ${
+      isActive ? "bg-indigo-600 rounded-lg text-white" : ""
+    }`}
+    href={href}
+  >
+    {icon}
+    <p>{label}</p>
+  </Link>
+);
 
 export default Sidebar;

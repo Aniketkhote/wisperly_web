@@ -75,7 +75,7 @@ const NetworkList = ({
               ? "Following"
               : person.isFollowing == false
               ? "Follow"
-              : "Remove Connection"}
+              : "Remove"}
           </button>
         </motion.div>
       ))}

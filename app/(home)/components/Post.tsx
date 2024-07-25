@@ -20,6 +20,7 @@ const Post = ({
   likes,
   comments,
   shares,
+  bookmark,
 }: {
   userImg: string;
   userName: string;
@@ -29,6 +30,7 @@ const Post = ({
   likes: string;
   comments: string;
   shares: string;
+  bookmark: boolean;
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -115,7 +117,7 @@ const Post = ({
           <span className="ml-1">{comments} Comments</span>
         </button>
         <button className="flex items-center text-sm text-gray-600 hover:text-indigo-600">
-          <FaBookmark />
+          <FaBookmark className={`${bookmark ? "text-indigo-500" : null} `} />
           <span className="ml-1">{shares} Saved</span>
         </button>
       </div>
